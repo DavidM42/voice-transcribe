@@ -20,13 +20,15 @@ export async function handle(message: Message) {
                 
                 // TODO delete this message after a day or something
                 await progressMsg.delete(true);
-                await chat.sendMessage(transcription);
+                const transcriptionMsg = await chat.sendMessage(transcription);
+
+                // delete transcribed text for own account
+                await transcriptionMsg.delete(false);
             } catch(error: unknown) {
                 await chat.sendMessage((error as Error).message);
+            } finally {
+                await message.delete(false)
             }
-            // finally {
-                // await message.delete(true)
-            // }
         }
     }
 }
