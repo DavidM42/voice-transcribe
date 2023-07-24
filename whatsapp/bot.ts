@@ -9,6 +9,7 @@ const client = new Client({
 });
 
 client.on('qr', qr => {
+    console.log('Please log into your whatsapp account by scanning the following code:');
     qrcode.generate(qr, {small: true});
 });
 
