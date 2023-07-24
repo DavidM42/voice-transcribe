@@ -23,9 +23,10 @@ export async function handle(message: Message) {
                 await chat.sendMessage(transcription);
             } catch(error: unknown) {
                 await chat.sendMessage((error as Error).message);
-            } finally {
-                await message.delete(true)
             }
+            // finally {
+                // await message.delete(true)
+            // }
         }
     }
 }
