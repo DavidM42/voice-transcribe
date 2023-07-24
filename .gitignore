@@ -26,3 +26,10 @@ whisper/venv/**
 # tmp audio files
 whisper/tmp/**
 !whisper/tmp/.gitkeep
+
+#whatsap tsc dist
+whatsapp/dist/**
+
+# whatsapp caches
+.wwebjs_auth
+.wwebjs_cache
