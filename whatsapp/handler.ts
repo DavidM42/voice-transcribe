@@ -9,7 +9,7 @@ export async function handle(message: Message) {
         const media = await message.downloadMedia();
         if (media.mimetype === 'audio/ogg; codecs=opus') {
             const chat =  (await message.getChat());
-            await chat.sendMessage('Ich transkribiere aktuell...');
+            const progressMsg = await chat.sendMessage('Ich transkribiere aktuell...');
             try {
                 const base64Data = media.data.replace(/^data:image\/png;base64,/, "");
                 const fileName = `${randomUUID()}.ogg`;
@@ -19,11 +19,12 @@ export async function handle(message: Message) {
                 await fs.unlink(`whisper/tmp/${fileName}`);
                 
                 // TODO delete this message after a day or something
+                await progressMsg.delete(true);
                 await chat.sendMessage(transcription);
             } catch(error: unknown) {
                 await chat.sendMessage((error as Error).message);
             } finally {
-                message.delete(true)
+                await message.delete(true)
             }
         }
     }
