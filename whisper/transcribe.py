@@ -5,5 +5,5 @@ import sys
 # minimal version of the cli script
 # replace the "small" model with others if you have the gpu/cpu for it (or not and need to use tiny)
 model = whisper.load_model("small")
-result = model.transcribe(sys.argv[1])
+result = model.transcribe(sys.argv[1], fp16=False)
 print(result["text"])
