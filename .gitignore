@@ -19,20 +19,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-#  venv whisper setup
-whisper/venv/**
-!whisper/venv/.gitkeep
-
-# tmp audio files
-whisper/tmp/**
-!whisper/tmp/.gitkeep
-
-#whatsap tsc dist
-whatsapp/dist/**
-
 # whatsapp caches
 .wwebjs_auth
 .wwebjs_cache
 
 #openapi ts logs
 openapi-ts-error-*.log
+
+# do not commit generated openapi client since baseURL changes
+src/external-services/whisper-api/generated/*
+!src/external-services/whisper-api/generated/.gitkeep
