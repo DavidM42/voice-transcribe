@@ -1,0 +1,34 @@
+# almost same content as in .gitignore
+
+# web dev
+
+.DS*Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+vite.config.js.timestamp-\_
+vite.config.ts.timestamp-\*
+
+# editor
+
+.vscode/
+
+##### python
+
+# Byte-compiled / optimized / DLL files
+
+**pycache**/
+_.py[cod]
+_$py.class
+
+# whatsapp caches
+
+.wwebjs_auth
+.wwebjs_cache
+
+#openapi ts logs
+openapi-ts-error-\*.log

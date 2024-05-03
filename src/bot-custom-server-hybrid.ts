@@ -27,7 +27,20 @@ let whatsappReady = false;
 
 // setup our whatsapp and server client
 const whatsappClient = new Client({
-	authStrategy: new LocalAuth()
+	authStrategy: new LocalAuth(),
+	// options from https://github.com/pedroslopez/whatsapp-web.js/issues/344#issuecomment-858653583
+	puppeteer: {
+		headless: true,
+		args: [
+			'--no-sandbox',
+			'--disable-setuid-sandbox',
+			'--disable-dev-shm-usage',
+			'--disable-accelerated-2d-canvas',
+			'--no-first-run',
+			'--no-zygote',
+			'--disable-gpu'
+		]
+	}
 });
 const app = express();
 
@@ -103,7 +116,8 @@ app.get(
 // idea from https://kit.svelte.dev/docs/adapter-node#custom-server
 app.use(handler);
 
-app.listen(3000, () => {
-	console.log('listening on port 3000');
+const port = process.env?.PORT || 8080;
+app.listen(port, () => {
+	console.log('listening on port ', port);
 	whatsappClient.initialize();
 });
