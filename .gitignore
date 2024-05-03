@@ -33,3 +33,6 @@ whatsapp/dist/**
 # whatsapp caches
 .wwebjs_auth
 .wwebjs_cache
+
+#openapi ts logs
+openapi-ts-error-*.log
